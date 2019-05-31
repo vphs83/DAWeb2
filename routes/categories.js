@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+// var categoryModel = require('../models/category.model');
 var categoryModel = require('../models/category.model');
 router.get('/',(req, res)=>
 {
