@@ -1,38 +1,39 @@
-<h5 class="card">
-  <div class="card-header">
-   Categories
+<div class="card shadow h-100">
+  <h5 class="card-header">
+      Categories
   </h5>
   <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col" class="text-right">
-          <a class="btn btn-outline-success btn-sm" href="#" role="button" title="Add">
-              <i class="fa fa-plus" aria-hidden="true"></i>
-              Add Category
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col" class="text-right">
+          <a class="btn btn-outline-success btn-sm" href="/categories/add" role="button" title="Add">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Add Category
           </a>
-          
-      </th>
-     
-    </tr>
-  </thead>
-  <tbody>
+
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
       {{#each this.categories}}
-    <tr>
-      <th scope="row">{{CatID}}</th>
-      <td>{{CatName}}</td>
-      <td class=" text-right">
-          <a  class="btn btn-danger btn-sm" href="#" role="button" title="Delete">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-      </a>
-      <a  class="btn btn-primary btn-sm" href="#" role="button" title="Edit">
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-      </a>
-      </td>
-      
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+      <tr>
+        <th scope="row">{{CatID}}</th>
+        <td>{{CatName}}</td>
+        <td class=" text-right">
+          <a class="btn btn-danger btn-sm" href="#" role="button" title="Delete">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+          <a class="btn btn-primary btn-sm" href="#" role="button" title="Edit">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </a>
+        </td>
+
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
+

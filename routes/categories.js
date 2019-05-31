@@ -14,8 +14,25 @@ router.get('/',(req, res)=>
            res.render('error',{layout:false});
         });
 })
-router.get('/single',(req, res)=>
+
+// router.get('/add',(req, res)=>
+// {
+//     res.end('category');
+// })
+
+router.get('/add',(req, res)=>
 {
-    res.end('category');
+    res.render('categories/add');
+})
+
+
+router.post('/add',(req, res)=>
+{
+    
+    categoryModel.add(req.body).then(id=>{
+        console.log(id);
+        res.render('categories/add');
+    })
+    
 })
 module.exports = router;

@@ -24,21 +24,21 @@ load: sql=>{
     });  
 },
 
-add: (tableName,entity,fn)=>{
-    var connection = createConnection();
-    var sql = `insert into ${tableName} set ?`;
-    connection.connect();
-    connection.query(sql,entity, (error, results, fields) => {
-        
-        if (error) {
-            console.log(error.sqlMessage);
-        } else {
+add: (tableName,entity)=>{
+    return new Promise((resolve, reject)=>{
+        var connection = createConnection();
+        var sql = `insert into ${tableName} set ?`;
+        connection.connect();
+        connection.query(sql,entity, (error, results, fields) => {
+            if (error) {
+                reject(error);
+            } else {   
+                resolve(results.insertId);
+            }
             
-           fn(results.insertId);
-        }
-    
-        connection.end();
-    });
+            connection.end();
+        }); 
+    });   
 },
 update: (tableName,idField,entity,id,fn)=>{
     var connection = createConnection();
