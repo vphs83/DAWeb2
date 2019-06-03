@@ -25,6 +25,25 @@ router.get('/add',(req, res)=>
     res.render('categories/add');
 })
 
+router.get('/edit/:id',(req, res)=>
+{
+   var id = req.params.id;
+   categoryModel.single(id)
+   .then(rows => {
+       if(rows.length >0)
+       {
+           res.render('/categories/edit', {
+               success: true,
+               category: rows[0]
+           });
+       }
+       else{
+            res.render('/categories/edit',{
+                success:false
+            });
+       }
+   });
+})
 
 router.post('/add',(req, res)=>
 {
