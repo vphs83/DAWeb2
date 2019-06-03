@@ -28,18 +28,25 @@ router.get('/add',(req, res)=>
 router.get('/edit/:id',(req, res)=>
 {
    var id = req.params.id;
-   categoryModel.single(id)
+   if(isNaN(id))
+   {
+    res.render('categories/edit',{
+        error:true
+    });
+    return;
+   }
+    categoryModel.single(id)
    .then(rows => {
        if(rows.length >0)
        {
-           res.render('/categories/edit', {
-               success: true,
+           res.render('categories/edit', {
+               error: false,
                category: rows[0]
            });
        }
        else{
-            res.render('/categories/edit',{
-                success:false
+            res.render('categories/edit',{
+                error:true
             });
        }
    });

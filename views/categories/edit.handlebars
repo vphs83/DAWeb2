@@ -3,16 +3,23 @@
         Categories
     </h5>
     <div class="card-body">
+        {{#if this.error}}
+        <div class="alert alert-danger" role="alert">
+            Invalid CategoryID <a href="/categories" class="alert-link">Back to List</a>
+        </div>
+        {{else}}
         <div class="row">
             <div class="col-sm-6">
                 <form action="" method="POST">
                     <div class="form-group">
-                        <label for="txtCatID">#</label>
-                        <input readonly type="text" class="form-control" id="txtCatID" name="CatID"  value="{{this.category.CatID}}">
+                        <label for="txtCatName"></label>
+                        <input readonly type="text" class="form-control" id="txtCatID" name="CatID"
+                            value="{{this.category.CatID}}">
                     </div>
                     <div class="form-group">
                         <label for="txtCatName">Category Name</label>
-                        <input type="text" class="form-control" id="txtCatName" name="CatName" placeholder="name" value="{{this.category.CatName}}">
+                        <input type="text" class="form-control" id="txtCatName" name="CatName" placeholder="name"
+                            value="{{this.category.CatName}}">
                     </div>
                     <button type="submit" class="btn btn-success">
                         <i class="fa fa-check" aria-hidden="true"></i>
@@ -21,5 +28,6 @@
                 </form>
             </div>
         </div>
+        {{/if}}
     </div>
 </div>
