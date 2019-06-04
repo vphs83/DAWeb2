@@ -61,4 +61,12 @@ router.post('/add',(req, res)=>
     })
     
 })
+
+router.post('/update',(req, res)=>
+{
+    
+    categoryModel.update(req.body).then(n=>{
+        res.redirect('/categories');
+    });
+})
 module.exports = router;
