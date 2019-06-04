@@ -6,7 +6,7 @@ router.get('/',(req, res)=>
 {
     categoryModel.all()
         .then(rows=>{
-            res.render('categories/index',{
+            res.render('vwcategories/index',{
                 categories: rows
             });
         })
@@ -22,7 +22,7 @@ router.get('/',(req, res)=>
 
 router.get('/add',(req, res)=>
 {
-    res.render('categories/add');
+    res.render('vwcategories/add');
 })
 
 router.get('/edit/:id',(req, res)=>
@@ -30,7 +30,7 @@ router.get('/edit/:id',(req, res)=>
    var id = req.params.id;
    if(isNaN(id))
    {
-    res.render('categories/edit',{
+    res.render('vwcategories/edit',{
         error:true
     });
     return;
@@ -39,13 +39,13 @@ router.get('/edit/:id',(req, res)=>
    .then(rows => {
        if(rows.length >0)
        {
-           res.render('categories/edit', {
+           res.render('vwcategories/edit', {
                error: false,
                category: rows[0]
            });
        }
        else{
-            res.render('categories/edit',{
+            res.render('vwcategories/edit',{
                 error:true
             });
        }
@@ -57,7 +57,7 @@ router.post('/add',(req, res)=>
     
     categoryModel.add(req.body).then(id=>{
         console.log(id);
-        res.render('categories/add');
+        res.render('vwcategories/add');
     })
     
 })
@@ -66,6 +66,14 @@ router.post('/update',(req, res)=>
 {
     
     categoryModel.update(req.body).then(n=>{
+        res.redirect('/categories');
+    });
+})
+
+router.post('/delete',(req, res)=>
+{
+    
+    categoryModel.delete(+req.body.CatID).then(n=>{
         res.redirect('/categories');
     });
 })

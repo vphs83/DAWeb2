@@ -56,21 +56,20 @@ update: (tableName,idField,entity,id)=>{
     });
     
 },
-// update: (tableName,idField,entity,id,fn)=>{
-//     var connection = createConnection();
-//     var sql = `update  ${tableName} set ? where ${idField} = ?`;
-//     connection.connect();
-//     connection.query(sql,[entity,id], (error, results, fields) => {
-        
-//         if (error) {
-//             console.log(error.sqlMessage);
-//         } else {
-            
-//            fn(results.changedRows);
-//         }
+delete: (tableName,idField,id)=>{
+    return new Promise((resolve, reject)=>{
+        var connection = createConnection();
+        var sql = `delete from  ${tableName} where ${idField} = ?`;
+        connection.connect();
+        connection.query(sql,id, (error, results, fields) => {
+            if (error) {
+                reject(error);
+            } else {   
+                resolve(results.affectedRows);
+            } connection.end();
+        });
+    });
     
-//         connection.end();
-//     });
-// },
+},
 };
 
