@@ -5,17 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Express App - Error</title>
+    <title>Express App - 404</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     html,
     body{
-        height: 100%
-    }
-    .stackErr{
-        max-height: 25rem;
-        overflow-y: auto;
+        height: 100%;
     }
 </style>
 </head>
@@ -24,16 +20,11 @@
 <div class="container h-100">
     <div class="row h-100 align-items-center">
         <div class="col-sm-12">
-            <div class="card mx-auto shadow">
+            <div class="card w-50 mx-auto shadow">
                 <div class="card-body text-center">
-                    <h1 class="card-title">Oops!</h1>
-                   <h5 class="text-danger">{{this.message}}</h5>
-                   <div class="text-nomospace stackErr" > 
-                      <small>
-                        {{this.error.stack}}
-                      </small>  
-
-                   </div>
+                    <h4 class="card-title">Oops!</h4>
+                   <h2>404. Page not found.</h2>
+                   <div>Sorry, an error has occured. Requested page not found.</div>
                    <div class="mt-4"> 
                        <a class="btn btn-primary btn-lg" href="/" >
                        <i class="fa fa-home" aria-hidden="true"></i>

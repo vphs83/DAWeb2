@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 // var categoryModel = require('../models/category.model');
 var categoryModel = require('../models/category.model');
-router.get('/',(req, res)=>
+router.get('/',(req, res,next)=>
 {
     categoryModel.all()
         .then(rows=>{
@@ -10,9 +10,7 @@ router.get('/',(req, res)=>
                 categories: rows
             });
         })
-        .catch(error=>{
-           res.render('error',{layout:false});
-        });
+        .catch(next);
 })
 
 // router.get('/add',(req, res)=>
@@ -20,7 +18,7 @@ router.get('/',(req, res)=>
 //     res.end('category');
 // })
 
-router.get('/add',(req, res)=>
+router.get('/add',(req, res,next)=>
 {
     res.render('vwcategories/add');
 })
@@ -49,32 +47,32 @@ router.get('/edit/:id',(req, res)=>
                 error:true
             });
        }
-   });
+   }).catch(next);
 })
 
-router.post('/add',(req, res)=>
+router.post('/add',(req, res,next)=>
 {
     
     categoryModel.add(req.body).then(id=>{
         console.log(id);
         res.render('vwcategories/add');
-    })
+    }).catch(next);
     
 })
 
-router.post('/update',(req, res)=>
+router.post('/update',(req, res,next)=>
 {
     
     categoryModel.update(req.body).then(n=>{
         res.redirect('/categories');
-    });
+    }).catch(next);
 })
 
-router.post('/delete',(req, res)=>
+router.post('/delete',(req, res,next)=>
 {
     
     categoryModel.delete(+req.body.CatID).then(n=>{
         res.redirect('/categories');
-    });
+    }).catch(next);
 })
 module.exports = router;

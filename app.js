@@ -2,6 +2,7 @@ var express = require('express');
 var exphbs= require('express-handlebars');
 var morgan = require('morgan');
 var app = express();
+var createError = require('http-errors');
 app.use(morgan('dev'));
 
 
@@ -25,6 +26,27 @@ app.get('/error',(req, res)=>
     res.render('error', {
         layout: false
     });
+})
+
+app.use((req, res, next)=>{
+    next(createError(404));
+})
+
+app.use((err, req, res, next)=>{
+    var status = err.status||500;
+    var vwErr = 'error';
+    if(status === 404)
+    {
+        vwErr = '404';
+    }
+    var message = err.message;
+    var error = err;
+    res.status(status).render(vwErr,{
+        layout: false, 
+        message,
+        error
+    });
+
 })
  var port  = 3000;
  app.listen(port,()=>
