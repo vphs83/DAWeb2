@@ -33,14 +33,21 @@ app.use((req, res, next)=>{
 })
 
 app.use((err, req, res, next)=>{
+    // console.log(process.env);
     var status = err.status||500;
     var vwErr = 'error';
     if(status === 404)
     {
         vwErr = '404';
     }
-    var message = err.message;
-    var error = err;
+    // app.set('env','prod');
+    var isProd = false;
+    if(process.env.NODE_ENV && process.env.NODE_ENV ==='production')
+    {
+        var isProd = true;
+    }
+    var message = isProd? 'An error has occured. Please contact administartor for more support': err.message;
+    var error = isProd ? {}: err;
     res.status(status).render(vwErr,{
         layout: false, 
         message,
