@@ -20,11 +20,17 @@ module.exports = {
         // })
 
         const data = await db.load(`select * from NEWS where CatID = ${catId}`);
-        for(let item of data) {
-            const tmp = new Date()
-            //item.NewsDate = parseInt((tmp - item.NewsDate) / (1000 * 60 * 60 * 24)) + "ngày trước"  //moment().startOf(item.NewsDate).fromNow(); 
-            item.NewsDate = timeAgo(item.NewsDate)
-        }
+        // for(let item of data) {
+        //     // const tmp = new Date()
+        //     // item.NewsDate = parseInt((tmp - item.NewsDate) / (1000 * 60 * 60 * 24)) + "ngày trước"  //moment().startOf(item.NewsDate).fromNow(); 
+        //     // item.NewsDate = timeAgo(item.NewsDate)
+            
+        // }
+        
+        console.log(data);
+        // return db.load(`select * from NEWS where CatID = ${catId}`);
+        
+    
         return data; //chay lai server xem run run
        
     },

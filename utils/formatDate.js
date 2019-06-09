@@ -31,7 +31,7 @@ const timeAgo = (timestamp, DWMY_timeAgo = true) => { // DWMY_timeAgo = [Days,We
         datetime = dateTime.date + ' at ' + dateTime.time;
     outputTime = '';
   
-  console.log(dateTime)
+//   console.log(dateTime)
     if (dateTime.seconds > 0) {
       outputTime = '1 Second ago';
     }
@@ -119,7 +119,7 @@ const timeAgo = (timestamp, DWMY_timeAgo = true) => { // DWMY_timeAgo = [Days,We
       // Will show yesterday date
       // example: Yesterday at 11:24 PM
     }
-    console.log(outputTime);
+    // console.log(outputTime);
    
     return outputTime;
   }
