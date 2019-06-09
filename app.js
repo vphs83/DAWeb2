@@ -1,18 +1,28 @@
 var express = require('express');
 var exphbs= require('express-handlebars');
 var morgan = require('morgan');
+// var moment = require('moment');
 var app = express();
+
 var createError = require('http-errors');
 app.use(morgan('dev'));
 
 
 app.use(express.urlencoded({ extended: true }))
  
-
+app.use(express.static('public'));
 app.use(express.json())
 app.use(require('./middleware/category.mdw'));
-
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+// app.use(require('./middleware/mcategories.mdw'));
+app.engine('handlebars', exphbs({
+    // layoutsDir:'views/layout',
+    defaultLayout: 'main'
+    // helpers:{
+    //     format_date: val =>{
+    //         return val.moment().format('L');  
+    //     }
+    // }
+}));
 app.set('view engine', 'handlebars');
 
 

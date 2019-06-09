@@ -58,35 +58,28 @@
           </h5>
           <div class="list-group">
            {{#each lcCategories}}
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="/categories/{{CatID}}/news" class="list-group-item list-group-item-action">
               {{CatName}}
               {{#if num_of_news}}
               <span class="badge badge-danger float-right">{{num_of_news}}</span>
               {{/if}}
             </a>
             {{/each}}
-            {{!-- <a href="#" class="list-group-item list-group-item-action active">
-              Cras justo odio
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              Dapibus ac facilisis in
-              <span class="badge badge-danger float-right">99</span>
-              
-              </a>
-            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1"
-              aria-disabled="true">Vestibulum at eros</a> --}}
           </div>
         </div>
         <div class="card shadow mt-3">
-          <div class="card-header">
-            Categories
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+           <h5 class="card-header">
+            mCategories
+          </h5>
+          <div class="list-group">
+           {{#each lcmCategories}}
+            <a href="#" class="list-group-item list-group-item-action">
+              {{mCatName}}
+              {{#if mnum_of_news}}
+              <span class="badge badge-danger float-right">{{mnum_of_news}}</span>
+              {{/if}}
+            </a>
+            {{/each}}
           </div>
         </div>
       </div>

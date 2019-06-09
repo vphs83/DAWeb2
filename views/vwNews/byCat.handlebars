@@ -1,0 +1,30 @@
+
+<div class="card shadow h-100">
+    <h5 class="card-header">
+        News
+    </h5>
+    <div class="card-body">
+        {{#if this.empty}}
+        <p class="card-text"> No News </p>
+        {{else}}
+        <div class="row">
+            {{#each this.news}}
+            <div class="col-sm-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="/imgs/news/{{NewsID}}/main_thumbs.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{NewsTitle}}</h5>
+                        <h6 class="card-title text-muted">{{ NewsDate}}</h6>
+                        <p class="card-text">{{NewsBody}}</p>
+                    </div>
+                    <div class="card-footer">
+
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+        {{/if}}
+    </div>
+</div>
