@@ -26,8 +26,11 @@ module.exports = {
         //     // item.NewsDate = timeAgo(item.NewsDate)
             
         // }
-        
-        console.log(data);
+        for(let item of data)
+        {
+            item.NewsDate = timeAgo(new Date(item.NewsDate).getTime()/1000);
+        }
+        // console.log(data);
         // return db.load(`select * from NEWS where CatID = ${catId}`);
         
     
