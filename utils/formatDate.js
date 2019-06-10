@@ -108,7 +108,7 @@ const timeAgo = (timestamp, DWMY_timeAgo = true) => { // DWMY_timeAgo = [Days,We
     }
     if (dateTime.years > 1) {
       if (DWMY_timeAgo) {
-        outputTime = dateTime.yeras + ' Years ago';
+        outputTime = dateTime.years + ' Years ago';
       } else {
         outputTime = datetime;
       }
