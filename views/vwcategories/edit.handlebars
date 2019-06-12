@@ -1,12 +1,12 @@
 <form action="/categories/update" method="post">
     <div class="card shadow ">
         <h5 class="card-header">
-            Edit Category
+            Chỉnh sửa danh mục
         </h5>
         <div class="card-body">
             {{#if this.error}}
             <div class="alert alert-danger" role="alert">
-                Invalid CategoryID <a href="/categories" class="alert-link">Back to List</a>
+                Invalid CategoryID <a href="/categories" class="alert-link">Trở về danh sách</a>
             </div>
             {{else}}
             <div class="form-group">
@@ -15,7 +15,7 @@
                     value="{{this.category.CatID}}">
             </div>
             <div class="form-group">
-                <label for="txtCatName">Category Name</label>
+                <label for="txtCatName">Tên danh mục</label>
                 <input type="text" class="form-control" id="txtCatName" name="CatName" placeholder="name"
                     value="{{this.category.CatName}}">
             </div>
@@ -24,16 +24,16 @@
             <div class="card-footer text-right">
                 <a class="btn btn-outline-primary" href="/categories" role="button" title="Back">
                     <i class="fa fa-backward" aria-hidden="true"></i>
-                    List
+                    Quay về
                 </a>
                 {{#unless this.error}}
                 <button type="submit" class="btn btn-danger" formaction="/categories/delete">
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    Detele
+                    Xoá
                 </button>
                 <button type="submit" class="btn btn-success">
                     <i class="fa fa-check" aria-hidden="true"></i>
-                    Save
+                    Lưu
                 </button>
                 {{/unless}}
             </div>
