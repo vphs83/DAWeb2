@@ -49,7 +49,7 @@
           </h5>
           <div class="list-group">
            {{#each lcCategories}}
-            <a href="/categories/{{CatID}}/news" class="list-group-item list-group-item-action">
+            <a href="/categories/{{CatID}}/news" class="list-group-item list-group-item-action {{#if active}} active {{/if}}">
               {{CatName}}
               {{#if num_of_news}}
               <span class="badge badge-danger float-right">{{num_of_news}}</span>
@@ -64,7 +64,7 @@
           </h5>
           <div class="list-group">
            {{#each lcmCategories}}
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="#" class="list-group-item list-group-item-action {{#if active}} active {{/if}}">
               {{mCatName}}
               {{#if mnum_of_news}}
               <span class="badge badge-danger float-right">{{mnum_of_news}}</span>

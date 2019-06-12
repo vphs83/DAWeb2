@@ -69,6 +69,13 @@ router.get('/:id/news', (req, res,next) => {
         return;
     }
     newsModel.allByCat(id).then(rows =>{
+        for(var c of res.locals.lcCategories){
+            if(c.CatID ===+id)
+            {
+                c.active = true;
+            }
+           
+        }
         res.render('vwNews/byCat',{
             error: false,
             empty: rows.length===0,
