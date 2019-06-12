@@ -70,7 +70,7 @@ router.get('/:id/news', (req, res,next) => {
     }
     newsModel.allByCat(id).then(rows =>{
         for(var c of res.locals.lcCategories){
-            if(c.CatID ===+id)
+            if(c.CatID === +id)
             {
                 c.active = true;
             }
