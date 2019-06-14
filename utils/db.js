@@ -1,12 +1,6 @@
 var mysql = require('mysql');
-
-var createConnection = ()=>mysql.createConnection({
-    host: 'localhost',
-    port: 8889,
-    user: 'root',
-    password: 'root',
-    database: 'qlbh',
-});
+var config = require('../config/default.json');
+var createConnection = ()=>mysql.createConnection(config['mysql']);
 
 module.exports = {
 load: sql=>{
