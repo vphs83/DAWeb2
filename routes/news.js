@@ -27,9 +27,16 @@ router.get('/:id', (req, res,next) => {
     newsModel.single(id)
         .then(rows => {
             if (rows.length > 0) {
+                var news = rows[0];
+                for(var c of res.locals.lcCategories){
+                                if(c.CatID === news.CatID)
+                                {
+                                    c.active = true;
+                               }   
+                       }
                 res.render('vwNews/detail', {
                     error: false,
-                    news: rows[0]
+                    news: news
                 });
             } else {
                 res.render('vwNews/detail', {
