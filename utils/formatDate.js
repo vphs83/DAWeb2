@@ -33,36 +33,36 @@ const timeAgo = (timestamp, DWMY_timeAgo = true) => { // DWMY_timeAgo = [Days,We
   
 
     if (dateTime.seconds > 0) {
-      outputTime = '1 Second ago';
+      outputTime = 'Last updated 1 Second ago';
     }
     if (dateTime.seconds > 1) {
-      outputTime = dateTime.seconds + ' Seconds ago';
+      outputTime = 'Last updated '+dateTime.seconds + ' Seconds ago';
     }
   
     if (dateTime.minutes == 1) {
-      outputTime = '1 Minute ago';
+      outputTime = 'Last updated 1 Minute ago';
     }
     if (dateTime.minutes > 1) {
-      outputTime = dateTime.minutes + ' Minutes ago';
+      outputTime = 'Last updated '+dateTime.minutes + ' Minutes ago';
     }
   
     if (dateTime.hours == 1) {
-      outputTime = '1 hour ago';
+      outputTime = 'Last updated 1 hour ago';
     }
     if (dateTime.hours > 1) {
-      outputTime = dateTime.hours + ' hours ago';
+      outputTime = 'Last updated '+dateTime.hours + ' hours ago';
     }
   
     if (dateTime.days == 1) {
       if (DWMY_timeAgo) {
-        outputTime = '1 Day ago';
+        outputTime = 'Last updated 1 Day ago';
       } else {
         outputTime = datetime;
       }
     }
     if (dateTime.days > 1) {
       if (DWMY_timeAgo) {
-        outputTime = dateTime.days + ' Days ago';
+        outputTime = 'Last updated '+ dateTime.days + ' days ago';
       } else {
         outputTime = datetime;
       }
@@ -71,14 +71,14 @@ const timeAgo = (timestamp, DWMY_timeAgo = true) => { // DWMY_timeAgo = [Days,We
     //weeks
     if (dateTime.weeks == 1) {
       if (DWMY_timeAgo) {
-        outputTime = dateTime.weeks + ' Week';
+        outputTime = 'Last updated '+dateTime.weeks + 'Week';
       } else {
         outputTime = datetime;
       }
     }
     if (dateTime.weeks > 1) {
       if (DWMY_timeAgo) {
-        outputTime = dateTime.weeks + ' Weeks';
+        outputTime = 'Last updated '+dateTime.weeks + ' Weeks';
       } else {
         outputTime = datetime;
       }
@@ -86,14 +86,14 @@ const timeAgo = (timestamp, DWMY_timeAgo = true) => { // DWMY_timeAgo = [Days,We
   
     if (dateTime.months == 1) {
       if (DWMY_timeAgo) {
-        outputTime = '1 Month ago';
+        outputTime = 'Last updated 1 Month ago';
       } else {
         outputTime = datetime;
       }
     }
     if (dateTime.months > 1) {
       if (DWMY_timeAgo) {
-        outputTime = dateTime.months + ' Months ago';
+        outputTime = 'Last updated '+dateTime.months + ' Months ago';
       } else {
         outputTime = datetime;
       }
@@ -101,14 +101,14 @@ const timeAgo = (timestamp, DWMY_timeAgo = true) => { // DWMY_timeAgo = [Days,We
   
     if (dateTime.years == 1) {
       if (DWMY_timeAgo) {
-        outputTime = '1 Year ago';
+        outputTime = 'Last updated 1 Year ago';
       } else {
         outputTime = datetime;
       }
     }
     if (dateTime.years > 1) {
       if (DWMY_timeAgo) {
-        outputTime = dateTime.years + ' Years ago';
+        outputTime = 'Last updated '+dateTime.years + ' Years ago';
       } else {
         outputTime = datetime;
       }
