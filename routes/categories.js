@@ -89,7 +89,7 @@ router.get('/:id/news', (req, res, next) => {
 
     ]).then(([nRows, rows]) => {
 
-        console.log(nRows);
+        // console.log(nRows);
 
         for (var c of res.locals.lcCategories) {
             if (c.CatID === +id) {
