@@ -1,6 +1,6 @@
 
 var db = require('../utils/db');
-
+var config = require('../config/default.json');
 // var moment = require("moment");
 const timeAgo = require('../utils/formatDate');
 module.exports = {
@@ -19,6 +19,19 @@ module.exports = {
         
         return data; 
     },
+
+    countByCat: catId=>{
+        
+        return db.load(`select count(*) as total from NEWS where CatID = ${catId}`);
+       
+    },
+
+    pageByCat: (catId, start_offset)=>{
+        var lim = config.paginate.default;
+        return db.load(`select * from NEWS where CatID = ${catId} limit ${lim} offset ${start_offset}`);
+       
+    },
+
     single: async id => {
        
         const data = await db.load(`select * from NEWS where NewsID = ${id}`);
