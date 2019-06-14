@@ -1,0 +1,26 @@
+<div class="card shadow ">
+    <h5 class="card-header">
+        Tin tức
+    </h5>
+    <div class="card-body ">
+        {{#if this.error}}
+        <div class="alert alert-danger" role="alert">
+            Invalid NewsID <a href="/" class="alert-link">Trở về trang chủ</a>
+        </div>
+        {{else}}
+        {{#with this.news}}
+        <div class="card border-0">
+            <img src="/imgs/news/{{NewsID}}/main.jpg" alt="{{NewsTitle}}" class="card-img-top">
+            <div class="card-body">
+                <h2 class="card-title">{{NewsTitle}}</h2>
+                <h5 class="card-title">{{TinyDes}}</h5>
+                <p class="card-text">
+                    {{NewsBody}}
+                </p>
+                <p class="card-text"><small class="text-muted">{{NewsDate}}</small></p>
+            </div>
+        </div>
+        {{/with}}
+        {{/if}}
+    </div>
+</div>

@@ -27,7 +27,7 @@ app.set('view engine', 'handlebars');
 
 
 app.use('/categories', require('./routes/categories'));
-
+app.use('/news', require('./routes/news'));
 app.get('/',(req, res)=>
 {
     res.render('home');

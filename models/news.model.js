@@ -9,37 +9,26 @@ module.exports = {
         return db.load('select * from NEWS');
     },
     allByCat: async catId=>{
-        // console.log(moment(new Date()));
-        // db.load(`select * from NEWS where CatID = ${catId}`).then(rs => {
-        //     // console.log(rs)
-        //     for(let item of rs) {
-        //         item.NewsDate = moment().format('L');
-        //     }
-        // }, err => {
-        //     console.log(err)
-        // })
-
+        
         const data = await db.load(`select * from NEWS where CatID = ${catId}`);
-        // for(let item of data) {
-        //     // const tmp = new Date()
-        //     // item.NewsDate = parseInt((tmp - item.NewsDate) / (1000 * 60 * 60 * 24)) + "ngày trước"  //moment().startOf(item.NewsDate).fromNow(); 
-        //     // item.NewsDate = timeAgo(item.NewsDate)
-            
-        // }
+        
         for(let item of data)
         {
             item.NewsDate = timeAgo(new Date(item.NewsDate).getTime()/1000);
         }
-        // console.log(data);
-        // return db.load(`select * from NEWS where CatID = ${catId}`);
         
-    
-        return data; //chay lai server xem run run
-       
+        return data; 
     },
-    single: id => {
+    single: async id => {
        
-        return db.load(`select * from NEWS where NewsID = ${id}`);
+        const data = await db.load(`select * from NEWS where NewsID = ${id}`);
+        
+        for(let item of data)
+        {
+            item.NewsDate = timeAgo(new Date(item.NewsDate).getTime()/1000);
+        }
+        
+        return data; 
     },
     add: entity =>{
         return db.add('NEWS', entity);

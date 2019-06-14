@@ -65,7 +65,7 @@ router.post('/delete', (req, res, next) => {
 router.get('/:id/news', (req, res,next) => {
     var id = req.params.id;
     if (isNaN(id)) {
-        res.render('vwNews/edit',{ error: true});
+        res.render('vwNews/byCat',{ error: true});
         return;
     }
     newsModel.allByCat(id).then(rows =>{
