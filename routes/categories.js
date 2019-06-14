@@ -18,7 +18,7 @@ router.get('/add', (req, res, next) => {
     res.render('vwcategories/add');
 })
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', (req, res,next) => {
     var id = req.params.id;
     if (isNaN(id)) {
         res.render('vwcategories/edit', {
@@ -84,8 +84,11 @@ router.get('/:id/news', (req, res, next) => {
     var start_offset =(page-1)*limit;
 
     Promise.all([
+        // newsModel.allByCat(id),
         newsModel.countByCat(id),
+        newsModel.allByCat(id),
         newsModel.pageByCat(id, start_offset),
+       
 
     ]).then(([nRows, rows]) => {
 
