@@ -71,7 +71,7 @@ const timeAgo = (timestamp, DWMY_timeAgo = true) => { // DWMY_timeAgo = [Days,We
     //weeks
     if (dateTime.weeks == 1) {
       if (DWMY_timeAgo) {
-        outputTime = 'Last updated '+dateTime.weeks + 'Week';
+        outputTime = 'Last updated '+dateTime.weeks + ' Week';
       } else {
         outputTime = datetime;
       }
