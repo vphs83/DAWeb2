@@ -86,7 +86,7 @@ router.get('/:id/news', (req, res, next) => {
     Promise.all([
         // newsModel.allByCat(id),
         newsModel.countByCat(id),
-        newsModel.allByCat(id),
+        // newsModel.allByCat(id),
         newsModel.pageByCat(id, start_offset),
        
 

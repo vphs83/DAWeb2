@@ -1,34 +1,31 @@
-<div class="card shadow h-100">
-  <h5 class="card-header">
-      Categories
-  </h5>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Tên</th>
-        <th scope="col" class="text-right">
-          <a class="btn btn-outline-success btn-sm" href="/categories/add" role="button" title="Add">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            Thêm danh mục
-          </a>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each this.categories}}
-      <tr>
-        <th scope="row">{{CatID}}</th>
-        <td>{{CatName}}</td>
-        <td class=" text-right">
-          <a class="btn btn-outline-primary btn-sm" href="/categories/edit/{{CatID}}" role="button" title="Edit">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          </a>
-        </td>
+<form action="" method="post">
+    <div class="card shadow">
+        <h5 class="card-header">
+            Đăng kí
+        </h5>
+        <div class="card-body">
+            <h5>Tài khoản</h5>
+            <div class="form-group">
+                <label for="txtCatName">Tên danh mục</label>
+                <input type="text" class="form-control" id="txtCatName" name="CatName" placeholder="Tên danh mục">
+            </div>
+            <hr>
+            <h5>Thông tin</h5>
+            <div class="form-group">
+                <label for="txtCatName">Tên danh mục</label>
+                <input type="text" class="form-control" id="txtCatName" name="CatName" placeholder="Tên danh mục">
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <a class="btn btn-primary" href="/categories" role="button" title="Back">
+                <i class="fa fa-backward" aria-hidden="true"></i>
+                Quay về
+            </a>
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                Lưu
+            </button>
+        </div>
+    </div>
 
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
-</div>
-
+</form>

@@ -8,28 +8,22 @@ module.exports = {
        
         return db.load('select * from NEWS');
     },
-    allByCat: async catId=>{
-        
-        const data = await db.load(`select * from NEWS where CatID = ${catId}`);
-        
-        for(let item of data)
-        {
-            item.NewsDate = timeAgo(new Date(item.NewsDate).getTime()/1000);
-        }
-        
-        return data; 
-    },
-
+    
     countByCat: catId=>{
         
         return db.load(`select count(*) as total from NEWS where CatID = ${catId}`);
        
     },
 
-    pageByCat: (catId, start_offset)=>{
+    pageByCat: async (catId, start_offset)=>{
         var lim = config.paginate.default;
-        return db.load(`select * from NEWS where CatID = ${catId} limit ${lim} offset ${start_offset}`);
-       
+        const data = await db.load(`select * from NEWS where CatID = ${catId} limit ${lim} offset ${start_offset}`);
+        for(let item of data)
+        {
+            item.NewsDate = timeAgo(new Date(item.NewsDate).getTime()/1000);
+        }
+        
+        return data; 
     },
 
     single: async id => {
