@@ -1,29 +1,111 @@
-<form action="" method="post">
+{{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script>
+    $(function() {
+        $('#registerForm').validate({
+           rules: {
+               f_Username: {
+                   required: true
+               },
+               password: {
+                   required: true
+                   minlength: 6
+               },
+               confirm: {
+                   required: true
+                   equalTo: $('[name="password"]')
+               },
+               f_Name: {
+                   required: true
+               },
+               f_Email: {
+                   required: true,
+                   email = true
+               },
+           },
+           message: {
+               f_Username: {
+                   required: 'Your username is required.'
+               }
+           },
+           errorElement: 'small',
+           errorClass: 'help-block text-danger',
+           validClass: 'is-valid',
+           highlight: function(e){
+               $(e).removeClass('is-valid').addClass('is-invalid');
+           },
+           unhighlight: function(e){
+                 $(e).removeClass('is-invalid').addClass('is-valid');
+           },
+        });
+    });
+</script>
+{{/section}}
+
+<form novalidate action="" method="post" id="registerForm">
     <div class="card shadow">
         <h5 class="card-header">
-            Đăng kí
+            Register
+            <i class="fa fa-registered" aria-hidden="true"></i>
         </h5>
         <div class="card-body">
-            <h5>Tài khoản</h5>
+            <h5 class="mb-3">Account</h5>
             <div class="form-group">
-                <label for="txtCatName">Tên danh mục</label>
-                <input type="text" class="form-control" id="txtCatName" name="CatName" placeholder="Tên danh mục">
+                <label for="txtUsername">Username</label>
+                <input type="text" class="form-control" id="txtUsername" name="f_Username" placeholder="Username">
             </div>
-            <hr>
-            <h5>Thông tin</h5>
             <div class="form-group">
-                <label for="txtCatName">Tên danh mục</label>
-                <input type="text" class="form-control" id="txtCatName" name="CatName" placeholder="Tên danh mục">
+                <label for="txtPassword">Password</label>
+                <input type="password" class="form-control" id="txtPassword" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="txtConfirm">Confirm</label>
+                <input type="password" class="form-control" id="txtConfirm" name="comfirm" placeholder="Confirm">
+            </div>
+            <hr class="mb-4">
+            <h5 class="mb-3">Information</h5>
+            <div class="form-group">
+                <label for="txtName">Name</label>
+                <input type="text" class="form-control" id="txtName" name="f_Name" placeholder="Name">
+            </div>
+            
+            <div class="form-group">
+                <label for="txtEmail">Email address</label>
+                <input type="email" class="form-control" id="txtEmail" name="f_Email" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                   
+                        <div class="form-group">
+                            <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input"
+                                    data-target="#datetimepicker4" />
+                                <div class="input-group-append" data-target="#datetimepicker4"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker4').datetimepicker({
+                                format: 'L'
+                            });
+                        });
+                    </script>
+              
             </div>
         </div>
         <div class="card-footer text-right">
-            <a class="btn btn-primary" href="/categories" role="button" title="Back">
-                <i class="fa fa-backward" aria-hidden="true"></i>
-                Quay về
-            </a>
-            <button type="submit" class="btn btn-success">
+
+            <button type="submit" class="btn btn-success btn-block">
                 <i class="fa fa-check" aria-hidden="true"></i>
-                Lưu
+                Regiter
             </button>
         </div>
     </div>

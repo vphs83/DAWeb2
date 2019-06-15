@@ -4,8 +4,8 @@ var router = express.Router();
 
 
 
-router.get('/add', (req, res, next) => {
-    res.render('vwAccount/Register');
+router.get('/register', (req, res, next) => {
+    res.render('vwAccount/register');
 })
 
 

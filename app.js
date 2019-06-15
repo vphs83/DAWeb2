@@ -1,6 +1,7 @@
 var express = require('express');
 var exphbs= require('express-handlebars');
 var morgan = require('morgan');
+var bhs_sections = require('express-handlebars-sections');
 // var moment = require('moment');
 var app = express();
 
@@ -16,18 +17,17 @@ app.use(require('./middleware/category.mdw'));
 // app.use(require('./middleware/mcategories.mdw'));
 app.engine('handlebars', exphbs({
     // layoutsDir:'views/layout',
-    defaultLayout: 'main'
-    // helpers:{
-    //     format_date: val =>{
-    //         return val.moment().format('L');  
-    //     }
-    // }
+    defaultLayout: 'main',
+    helpers:{
+        section: bhs_sections()
+    }
 }));
 app.set('view engine', 'handlebars');
 
 
 app.use('/categories', require('./routes/categories'));
 app.use('/news', require('./routes/news'));
+app.use('/account', require('./routes/account'));
 app.get('/',(req, res)=>
 {
     res.render('home');
