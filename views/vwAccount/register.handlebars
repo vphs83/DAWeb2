@@ -1,42 +1,94 @@
+{{#section 'css'}}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+{{/section}}
+
 {{#section 'js'}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 <script>
-    $(function() {
+    $(function () {
+        $('#txtDOB').datetimepicker({
+            format: 'L'
+        });
+    });
+</script>
+
+<script>
+    $().ready(function () {
         $('#registerForm').validate({
-           rules: {
-               f_Username: {
-                   required: true
-               },
-               password: {
-                   required: true
-                   minlength: 6
-               },
-               confirm: {
-                   required: true
-                   equalTo: $('[name="password"]')
-               },
-               f_Name: {
-                   required: true
-               },
-               f_Email: {
-                   required: true,
-                   email = true
-               },
-           },
-           message: {
-               f_Username: {
-                   required: 'Your username is required.'
-               }
-           },
-           errorElement: 'small',
-           errorClass: 'help-block text-danger',
-           validClass: 'is-valid',
-           highlight: function(e){
-               $(e).removeClass('is-valid').addClass('is-invalid');
-           },
-           unhighlight: function(e){
-                 $(e).removeClass('is-invalid').addClass('is-valid');
-           },
+            rules: {
+                f_Username: {
+                    required: true,
+                    remote: {
+                        url: '/account/is-available',
+                        data: {
+                            user: function()
+                            {
+                                return $('#txtUsername').val();
+                            }
+                        }
+                    }
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                comfirm: {
+                    required: true,
+                    equalTo: $('[name="password"]')
+                },
+                f_Name: {
+                    required: true
+                },
+                f_Email: {
+                    required: true,
+                    email: true
+                },
+                dob: {
+                    required: true
+                }
+            },
+            messages:
+            {
+                f_Username:
+                {
+                    required: 'Your username is required.',
+                    remote: 'Your username has been taken, please take another.'
+
+                },
+                password:
+                {
+                    required: 'Your password is required.',
+                    minlength: 'Your password must have a lasted 6 characters.'
+                },
+                comfirm: {
+                    required: 'Your password does not match.',
+                    equalTo: 'Your password does not match.'
+                },
+                f_Name: {
+                    required: 'Valid full name is required.'
+                },
+                f_Email: {
+                    required: 'Please enter a valid email address.',
+                    email: 'Please enter a valid email address.'
+                },
+                dob: {
+                    required: 'Valid date of birth is required.'
+                }
+
+            },
+            errorElement: 'small',
+            errorClass: 'help-block text-danger',
+            validClass: 'is-valid',
+            highlight: function (e) {
+                $(e).removeClass('is-valid').addClass('is-invalid');
+            },
+            unhighlight: function (e) {
+                $(e).removeClass('is-invalid').addClass('is-valid');
+            }
         });
     });
 </script>
@@ -46,7 +98,6 @@
     <div class="card shadow">
         <h5 class="card-header">
             Register
-            <i class="fa fa-registered" aria-hidden="true"></i>
         </h5>
         <div class="card-body">
             <h5 class="mb-3">Account</h5>
@@ -65,10 +116,10 @@
             <hr class="mb-4">
             <h5 class="mb-3">Information</h5>
             <div class="form-group">
-                <label for="txtName">Name</label>
-                <input type="text" class="form-control" id="txtName" name="f_Name" placeholder="Name">
+                <label for="txtName">Full Name</label>
+                <input type="text" class="form-control" id="txtName" name="f_Name" placeholder="Full Name">
             </div>
-            
+
             <div class="form-group">
                 <label for="txtEmail">Email address</label>
                 <input type="email" class="form-control" id="txtEmail" name="f_Email" aria-describedby="emailHelp"
@@ -77,29 +128,16 @@
                     else.</small>
             </div>
 
-            <div class="container">
-                <div class="row">
-                   
-                        <div class="form-group">
-                            <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input"
-                                    data-target="#datetimepicker4" />
-                                <div class="input-group-append" data-target="#datetimepicker4"
-                                    data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
+            <div class="form-group">
+                <label for="txtDOB">Date of Birth</label>
+                <div class="input-group date" id="txtDOB" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" name="dob" data-target="#txtDOB" />
+                        <div class="input-group-append" data-target="#txtDOB" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker4').datetimepicker({
-                                format: 'L'
-                            });
-                        });
-                    </script>
-              
+                </div>
             </div>
+
         </div>
         <div class="card-footer text-right">
 
