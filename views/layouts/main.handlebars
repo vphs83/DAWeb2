@@ -8,7 +8,8 @@
   <title>Express App</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
   {{{_sections.css}}}
 </head>
 
@@ -24,7 +25,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-   {{#each lcCategories}}
+        {{#each lcCategories}}
         <li class="nav-item active">
           <a class="nav-link" href="/categories/{{CatID}}/news">{{CatName}} <span class="sr-only">(current)</span></a>
         </li>
@@ -35,6 +36,37 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
       </form>
+
+      <form id="frmLogout" action="/account/logout" method="POST"></form>
+      <ul class="navbar-nav">
+
+        {{#if isAuthenticated}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Hi, <strong>{{authUser.f_Name}}</strong>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/account/profile">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript: $('#frmLogout').submit();">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              Sign Out
+            </a>
+          </div>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/account/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/account/login">Sign In</a>
+        </li>
+        {{/if}}
+      </ul>
     </div>
   </nav>
 
@@ -46,12 +78,12 @@
           <h5 class="card-header">
             Danh mục
           </h5>
-         <div class="list-group">
+          <div class="list-group">
             {{#each lcCategories}}
             <a href="/categories/{{CatID}}/news"
               class="list-group-item list-group-item-action {{#if active}} active {{/if}}">
               {{CatName}}
-               {{!-- {{#if num_of_news}}
+              {{!-- {{#if num_of_news}}
               <span class="badge badge-danger float-right">{{num_of_news}}</span>
               {{/if}}  --}}
             </a>
