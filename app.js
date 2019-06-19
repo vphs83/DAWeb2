@@ -2,23 +2,14 @@ var express = require('express');
 var exphbs= require('express-handlebars');
 var morgan = require('morgan');
 var bhs_sections = require('express-handlebars-sections');
+var createError = require('http-errors');
 
 var app = express();
-
-var createError = require('http-errors');
 app.use(morgan('dev'));
 
 
-app.use(express.urlencoded({ extended: true }))
- 
-app.use(express.static('public'));
-app.use(express.json())
-app.use(require('./middleware/category.mdw'));
-app.use(require('./middleware/auth.mdw'));
-require('./middleware/session')(app);
-require('./middleware/passport')(app);
-// app.use(require('./middleware/mcategories.mdw'));
 app.engine('handlebars', exphbs({
+    // app.use(require('./middleware/mcategories.mdw'));
     // layoutsDir:'views/layout',
     defaultLayout: 'main',
     helpers:{
@@ -26,6 +17,17 @@ app.engine('handlebars', exphbs({
     }
 }));
 app.set('view engine', 'handlebars');
+app.use(express.urlencoded({ extended: true }))
+ 
+app.use(express.static('public'));
+app.use(express.json())
+
+require('./middleware/session')(app);
+require('./middleware/passport')(app);
+
+app.use(require('./middleware/auth.mdw'));
+app.use(require('./middleware/category.mdw'));
+
 
 
 app.use('/categories', require('./routes/categories'));

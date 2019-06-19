@@ -3,6 +3,7 @@ var bcrypt = require('bcrypt');
 var moment = require('moment');
 var passport = require('passport');
 var userModel = require('../models/user.model');
+var restricted = require('../middleware/restricted.mdw');
 
 var router = express.Router();
 
@@ -63,14 +64,22 @@ router.post('/login', (req, res, next) => {
         })
       }
   
-    //   var retUrl = req.query.retUrl || '/';
+      var retUrl = req.query.retUrl || '/';
       req.logIn(user, err => {
         if (err)
           return next(err);
   
-        return res.redirect('/');
+        return res.redirect(retUrl);
       });
     })(req, res, next);
   })
 
+  router.get('/logout', restricted, (req, res, next) => {
+    req.logout();
+    res.redirect('/account/login');
+})
+
+  router.get('/profile', restricted, (req, res, next) => {
+    res.end('profile');
+})
 module.exports = router;
