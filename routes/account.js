@@ -63,7 +63,7 @@ router.post('/login', (req, res, next) => {
           err_message: info.message
         })
       }
-  
+      
       var retUrl = req.query.retUrl || '/';
       req.logIn(user, err => {
         if (err)
@@ -74,7 +74,7 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
   })
 
-  router.get('/logout', restricted, (req, res, next) => {
+  router.post('/logout', restricted, (req, res, next) => {
     req.logout();
     res.redirect('/account/login');
 })
