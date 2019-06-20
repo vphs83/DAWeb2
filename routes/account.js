@@ -80,6 +80,24 @@ router.post('/login', (req, res, next) => {
 })
 
   router.get('/profile', restricted, (req, res, next) => {
-    res.end('profile');
+    // res.end('profile');
+    res.render('vwAccount/profile');
+    // var id = req.user.f_ID;
+ 
 })
+
+
+router.post('/profile', (req, res, next) => {
+  var dob = moment(req.body.dob,'DD/MM/YYYY').format('YYYY-MM-DD');
+  // var id = req.user.f_ID;
+  // console.log(id);
+  var entity = req.body;
+  console.log(entity);
+  entity.f_DOB = dob;
+  delete entity.dob;
+  userModel.update(entity).then(n=>{
+      res.redirect('/');
+  })
+})
+
 module.exports = router;

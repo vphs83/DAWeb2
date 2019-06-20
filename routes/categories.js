@@ -44,7 +44,6 @@ router.get('/edit/:id', (req, res,next) => {
 router.post('/add', (req, res, next) => {
 
     categoryModel.add(req.body).then(id => {
-        console.log(id);
         res.render('vwcategories/add');
     }).catch(next);
 

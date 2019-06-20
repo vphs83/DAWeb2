@@ -20,6 +20,7 @@ module.exports = function (app) {
           }
   
           var user = rows[0];
+          // console.log(user);
           var ret = bcrypt.compareSync(password, user.f_Password);
           if (ret) {
             return done(null, user);
@@ -39,4 +40,5 @@ module.exports = function (app) {
     passport.deserializeUser((user, done) => {
       done(null, user);
     })
+   
   }

@@ -4,6 +4,7 @@ module.exports = function (app) {
   app.use(session({
     secret: 'mysecret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    proxy: true
   }));
 }
