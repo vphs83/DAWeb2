@@ -46,6 +46,17 @@ router.get('/:id', (req, res,next) => {
         }).catch(next);
 })
 
+// router.get('/', (req, res, next) => {
+//     newsModel.all10()
+//             .then(rows => {
+//                 res.render('/', {
+//                     news: rows
+//                 });
+//             })
+//             .catch(next);
+//     })
+    
+  
 // router.post('/add', (req, res, next) => {
 
 //     categoryModel.add(req.body).then(id => {

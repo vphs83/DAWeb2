@@ -3,7 +3,7 @@ var exphbs= require('express-handlebars');
 var morgan = require('morgan');
 var bhs_sections = require('express-handlebars-sections');
 var createError = require('http-errors');
-
+var newsModel = require('./models/news.model');
 var app = express();
 app.use(morgan('dev'));
 
@@ -33,10 +33,25 @@ app.use(require('./middleware/category.mdw'));
 app.use('/categories', require('./routes/categories'));
 app.use('/news', require('./routes/news'));
 app.use('/account', require('./routes/account'));
+
+// app.get('/',(req, res)=>
+// {
+//     res.render('home');
+// })
+
 app.get('/',(req, res)=>
 {
-    res.render('home');
+    newsModel.all10()
+        .then(rows => {
+            console.log('rows'+ rows);
+            res.render('home', {
+                news: rows
+            });
+        })
 })
+
+
+
 app.get('/error',(req, res)=>
 {
     res.render('error', {

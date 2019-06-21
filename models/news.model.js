@@ -9,6 +9,18 @@ module.exports = {
         return db.load('select * from NEWS');
     },
     
+    all10: async()=>{
+       
+        const data = await db.load('SELECT * FROM NEWS ORDER by NewsDate DESC LIMIT 10');
+        
+        for(let item of data)
+        {
+            item.NewsDate = timeAgo(new Date(item.NewsDate).getTime()/1000);
+        }
+        
+        return data; 
+    },
+
     countByCat: catId=>{
         
         return db.load(`select count(*) as total from NEWS where CatID = ${catId}`);
@@ -48,4 +60,5 @@ module.exports = {
         delete entity.NewsID;
         return db.update('NEWS', 'NewsID',entity, id);
     }
+
 }
