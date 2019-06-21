@@ -29,7 +29,6 @@ app.use(require('./middleware/auth.mdw'));
 app.use(require('./middleware/category.mdw'));
 
 
-
 app.use('/categories', require('./routes/categories'));
 app.use('/news', require('./routes/news'));
 app.use('/account', require('./routes/account'));
@@ -43,7 +42,6 @@ app.get('/',(req, res)=>
 {
     newsModel.all10()
         .then(rows => {
-            console.log('rows'+ rows);
             res.render('home', {
                 news: rows
             });
