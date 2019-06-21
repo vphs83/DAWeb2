@@ -20,6 +20,7 @@ module.exports = {
         return db.delete('categories', 'CatID',id);
     },
     update: entity =>{
+        console.log('entity'+ entity);
         var id = entity.CatID;
         delete entity.CatID;
         return db.update('categories', 'CatID',entity, id);

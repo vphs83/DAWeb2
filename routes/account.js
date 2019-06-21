@@ -89,10 +89,9 @@ router.post('/login', (req, res, next) => {
 
 router.post('/profile', (req, res, next) => {
   var dob = moment(req.body.dob,'DD/MM/YYYY').format('YYYY-MM-DD');
-  // var id = req.user.f_ID;
-  // console.log(id);
+  var id = req.user.f_ID;
   var entity = req.body;
-  console.log(entity);
+  entity['f_ID'] = id;
   entity.f_DOB = dob;
   delete entity.dob;
   userModel.update(entity).then(n=>{
