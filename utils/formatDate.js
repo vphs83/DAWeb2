@@ -1,8 +1,8 @@
 var moment = require("moment");
 //Check if date is today
 function isToday(momentDate) {
-    var yesterday = moment().clone().startOf('day');
-    return momentDate.isSame(yesterday , 'd');
+    var today = moment().clone().startOf('day');
+    return momentDate.isSame(today , 'd');
   }
   
   //Check if date is yesterday
